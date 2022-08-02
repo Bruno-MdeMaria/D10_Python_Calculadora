@@ -29,31 +29,43 @@ operacao = {                   #UM DICIONARIO COM A CHAVE(KEY) COMO SENDO OS SIM
 
 num1 = int(input("Qual o primeiro número?: \n"))
 
-for simbolos in operacao:
-    print(simbolos)
+repetir = True
 
-opera= input("Qual operação você quer fazer?: \n")
+while repetir == True:
+    for simbolos in operacao:
+        print(simbolos)
 
-num2 = int(input("Qual o segundo número?: \n"))
+    opera= input("Qual operação você quer fazer?: \n")
 
-calcaladora = operacao[opera]      #VARIAVEL CALCULADORA VVAI RECEBER UMA DAS FUNÇÕES DO DICIONARIO OPERACAO DEPENDENDO DA OPERAÇÃO ESCOLHIDA PELÇO USUARIO (OPERA).
+    num2 = int(input("Qual o novo número?: \n"))
 
-resultado = calcaladora(n1=num1, n2=num2)
+    calcaladora = operacao[opera]      #VARIAVEL CALCULADORA VVAI RECEBER UMA DAS FUNÇÕES DO DICIONARIO OPERACAO DEPENDENDO DA OPERAÇÃO ESCOLHIDA PELÇO USUARIO (OPERA).
 
-print(f"{num1} {opera} {num2} = {resultado}")
+    resultado = calcaladora(n1=num1, n2=num2)
 
-new_opera = input("Qual a nova operação?: \n")
+    print(f"{num1} {opera} {num2} = {resultado}")
 
-num3 = int(input("Qual o novo numero?: \n"))
+    continuar1 = input(f"Voce quer continnuar calculando com {resultado}? Digite 'S' ou 'N': \n").lower()
+    if continuar1 == "s":
+        repetir = True
+        num1 = resultado
+    else: repetir = False
+    os.system("cls")
 
-calcaladora = operacao[new_opera]  
+    new_opera = input("Qual a nova operação?: \n")
 
-new_resultado = calcaladora(resultado,num3)
+    num3 = int(input("Qual o novo numero?: \n"))
 
-print(f"{resultado} {new_opera} {num3} = {new_resultado}")
+    calcaladora = operacao[new_opera]  
 
-continuar = input(f"Voce quer continnuar calculando com {new_resultado}? Digite 'S' ou 'N': \n").lower()
-if continuar == "n":
-    repetir = False
+    new_resultado = calcaladora(resultado,num3)
+
+    print(f"{resultado} {new_opera} {num3} = {new_resultado}")
+
+    continuar = input(f"Voce quer continnuar calculando com {new_resultado}? Digite 'S' ou 'N': \n").lower()
+    if continuar == "n":
+        repetir = False
+        os.system("cls")
+    else: num1 = new_resultado
 
 
